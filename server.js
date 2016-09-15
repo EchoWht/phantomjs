@@ -13,25 +13,28 @@ if (system.args.length !== 2) {
     server = require('webserver').create();
 
     service = server.listen(port, function (request, response) {
-        // test
-        var page = require('webpage').create();
-        var args = require('system').args;
+        // 生成截图 start
+
+        // var args = require('system').args;
+
         var myURL = parseURL(request.url);
         console.log('URL:'+myURL);
         var filename = myURL.params.pic;
         var url = myURL.params.url;
-        page.viewportSize = { width: 1024, height: 800 };
-        page.clipRect = { top: 0, left: 0, width: 1024, height: 800 };
-        page.settings = {
-            javascriptEnabled: false,
-            loadImages: true,
-            userAgent: 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) PhantomJS/19.0'
-        };
-        page.open(url, function () {
-            page.render(filename);
-        });
-
-        // test
+        if (filename&&url){
+            var page = require('webpage').create();
+            page.viewportSize = { width: 960, height: 600 };
+            page.clipRect = { top: 0, left: 0, width: 960, height: 600 };
+            page.settings = {
+                javascriptEnabled: false,
+                loadImages: true,
+                userAgent: 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) PhantomJS/19.0'
+            };
+            page.open(url, function () {
+                page.render(filename);
+            });
+        }
+        // 生成截图 end
         console.log('Request at ' + new Date());
         console.log(request.url);
 
