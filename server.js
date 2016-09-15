@@ -16,7 +16,7 @@ if (system.args.length !== 2) {
         // 生成截图 start
 
         // var args = require('system').args;
-        var msg='截图成功';
+        var msg='Success';
         var myURL = parseURL(request.url);
         console.log('URL:'+myURL);
         var filename = myURL.params.pic;
@@ -34,7 +34,7 @@ if (system.args.length !== 2) {
                 page.render(filename);
             });
         }else{
-            msg="请输入图片名称和url";
+            msg="Please input filename and url.";
         }
         // 生成截图 end
         console.log('Request at ' + new Date());
