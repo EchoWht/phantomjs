@@ -16,7 +16,7 @@ if (system.args.length !== 2) {
         // 生成截图 start
 
         // var args = require('system').args;
-
+        var msg='截图成功';
         var myURL = parseURL(request.url);
         console.log('URL:'+myURL);
         var filename = myURL.params.pic;
@@ -33,6 +33,8 @@ if (system.args.length !== 2) {
             page.open(url, function () {
                 page.render(filename);
             });
+        }else{
+            msg="请输入图片名称和url";
         }
         // 生成截图 end
         console.log('Request at ' + new Date());
@@ -45,10 +47,10 @@ if (system.args.length !== 2) {
         };
         response.write('<html>');
         response.write('<head>');
-        response.write('<title>Hello, world!</title>');
+        response.write('<title>Hello, Blksye!</title>');
         response.write('</head>');
         response.write('<body>');
-        response.write('<p>This is from PhantomJS web server.</p>');
+        response.write('<p>'+msg+'</p>');
         response.write('<p>Request data:</p>');
         response.write('<pre>');
         response.write(JSON.stringify(request.url, null, 4));
