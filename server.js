@@ -31,7 +31,7 @@ if (system.args.length !== 2) {
                 userAgent: 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) PhantomJS/19.0'
             };
             page.open(url, function () {
-                page.render(filename);
+                page.render('../www.blskye.com/wht/uploads/notepic/'+filename);
             });
         }else{
             msg="Please input filename and url.";
